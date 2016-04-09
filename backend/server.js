@@ -31,14 +31,14 @@ connection.connect(function(err){
 
 
 // test_CDNN
-connection.query({
-    sql: 'SELECT * FROM business WHERE b_name = ?',
-    values: ['macys']
-
-}, function(err, res,fields){
-    if(err) console.log(err);
-    else console.log( res[0]["b_id"]);
-});
+// connection.query({
+//     sql: 'SELECT b_name,b_id FROM business WHERE b_name = ?',
+//     values: ['macys']
+//
+// }, function(err, res,fields){
+//     if(err) console.log(err);
+//     else console.log( res);
+// });
 
 
 // var user = {
@@ -153,8 +153,17 @@ app.get('/scan',function(req,response){
                   } else if (res.length == 0){
                         response.sendStatus(404);
                   }else{
-
-                      response.status(200).send(result[0]["price"]);
+                      connection.query({
+                          sql: 'SELECT itemname, description FROM buy WHERE itemid = ?',
+                          values:[req.body.barcode],
+                      }, function(err, result,fields){
+                          if(err){
+                              console.log(err);
+                              response.sendStatus(500);
+                          }else{
+                              response.status(200).send(result);
+                          }
+                      });
                   }
               });
 
