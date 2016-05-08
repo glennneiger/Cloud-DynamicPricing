@@ -151,7 +151,7 @@ app.get('/login', function(req, response){
 });
 
 
-app.get('/profile', function(req,resonse){
+app.get('/profile', function(req,response){
     console.log(req.query);
     var username = req.query.username;
     connection.query({
@@ -161,7 +161,10 @@ app.get('/profile', function(req,resonse){
             if(err){
                 console.log(err);
                 response.sendStatus(500);
-            }else{
+            }else if (res.length == 0) {
+                response.sendStatus(404)
+
+            }else {
                 response.send(res);
             }
     });
@@ -187,7 +190,7 @@ app.get('/scan',function(req,response){
             // check whether the item is under dynamic pricing
             bid = bid_res[0]["b_id"];
             connection.query({
-                sql: 'SELECT price FROM buy WHERE bid= ? AND itemid =?',
+                sql: 'SELECT price FROM buy WHERE b_id= ? AND itemid =?',
                 values:[bid,itemid]
             },function(err,buy_res,fields){
                 if(err){
@@ -196,6 +199,7 @@ app.get('/scan',function(req,response){
                 } else if (buy_res.length == 0){
                     response.sendStatus(406);
                 }else{
+                    price = buy_res[0]["price"];
                     //check whether the user is eligible for bidding
                     connection.query({
                         sql: 'SELECT time FROM history WHERE username=? AND bid=? AND iid=? AND DATE_SUB(NOW(),INTERVAL ? HOUR) < time',
@@ -208,9 +212,9 @@ app.get('/scan',function(req,response){
                             response.sendStatus(403);
                         }else{
 
-                            //get the description from buy
+                            //get the price from buy
                             connection.query({
-                                sql: 'SELECT itemname, description, price FROM buy WHERE itemid = ? AND bid =?',
+                                sql: 'SELECT itemname,description  FROM item WHERE itemid = ?',
                                 values:[itemid,bid],
                             }, function(err, desp_res,fields){
                                 if(err){
@@ -219,7 +223,8 @@ app.get('/scan',function(req,response){
                                 }else if (desp_res.length== 0){
                                     response.sendStatus(500);
                                 }else{
-                                    reponse.send(desp_res);
+                                    desp_res[0].price = price;
+                                    response.send(desp_res[0]);
                                 }// endd else
                             });// end query  of descripton
 
@@ -233,7 +238,7 @@ app.get('/scan',function(req,response){
 
 });// end scan function
 
-app.get('/bid',function(req,res){
+app.get('/bid',function(req,response){
     console.log(req.query);
     var bid_price = req.query.bid_price;
     var itemid = req.query.barcode;
@@ -252,7 +257,7 @@ app.get('/bid',function(req,res){
         }else{
             bid = bid_res[0]["b_id"];
             connection.query({
-                sql: 'INSERT INTO history  VALUES (?, ?, ?, ?, NOW()',
+                sql: 'INSERT INTO history (username,bid,iid,bid_price,time) VALUES (?, ?, ?, ?,  NOW())',
                 values:[username, bid, itemid, bid_price],
             }, function(err, insert_res,fields){
                 if (err){
