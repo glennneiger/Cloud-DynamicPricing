@@ -94,6 +94,7 @@ app.get('/signup', function (req, response) {
      * get the username  and password
      *
     */
+    console.log(req.body);
     var user = {
         username: req.body.username,
         password: req.body.password
@@ -123,6 +124,7 @@ app.get('/signup', function (req, response) {
 });
 
 app.get('/login', function(req, response){
+    console.log(req.body);
     var user = {
         username: req.body.username,
         password: req.body.password
@@ -147,6 +149,7 @@ app.get('/login', function(req, response){
 
 
 app.get('/profile', function(req,resonse){
+    console.log(req.body);
     var username = req.body.username;
     connection.query({
         sql: 'SELECT * FROM history WHERE username= ?',
@@ -163,6 +166,7 @@ app.get('/profile', function(req,resonse){
 
 
 app.get('/scan',function(req,response){
+    console.log(req.body);
     var bid = 0;
     var itemid = req.body.barcode;
     var username = req.body.username;
@@ -180,7 +184,7 @@ app.get('/scan',function(req,response){
             // check whether the item is under dynamic pricing
             bid = bid_res[0]["b_id"];
             connection.query({
-                sql: 'SELECT * FROM buy WHERE bid= ? AND itemid =?',
+                sql: 'SELECT price FROM buy WHERE bid= ? AND itemid =?',
                 values:[bid,itemid]
             },function(err,buy_res,fields){
                 if(err){
@@ -203,8 +207,8 @@ app.get('/scan',function(req,response){
 
                             //get the description from buy
                             connection.query({
-                                sql: 'SELECT itemname, description FROM buy WHERE itemid = ?',
-                                values:[req.body.barcode],
+                                sql: 'SELECT itemname, description, price FROM buy WHERE itemid = ? AND bid =?',
+                                values:[itemid,bid],
                             }, function(err, desp_res,fields){
                                 if(err){
                                     console.log(err);
@@ -227,6 +231,7 @@ app.get('/scan',function(req,response){
 });// end scan function
 
 app.get('/bid',function(req,res){
+    console.log(req.body);
     var bid_price = req.body.bid_price;
     var itemid = req.body.barcode;
     var username = req.body.username;
