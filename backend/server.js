@@ -87,6 +87,9 @@ connection.connect(function(err){
 //       }
 // });
 
+app.get('/',function(req,response){
+    console.lgo(req.body);
+});
 
 //===============ROUTES===============
 app.get('/signup', function (req, response) {
