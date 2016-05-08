@@ -30,7 +30,7 @@ If the server has internal failure, it will response with status code 500;
 If the business is not found, if will response with status code 404
 If the item is not under dynamic pricing, it will response with status code 406
 If the user is ineligible for this item (the user has bid it before ), it will response with status code 403
-Otherwise it will response with the item name and item description, and the status code is 200.  
+Otherwise it will response with the item name, item description and its price, and the status code is 200.
 
 
 5. bid interface:
