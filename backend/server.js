@@ -177,38 +177,50 @@ app.get('/scan',function(req,response){
         } else if (bid_res.length == 0){
             response.sendStatus(404);
         }else{
+            // check whether the item is under dynamic pricing
             bid = bid_res[0]["b_id"];
-
-            //check whether the user is eligible for bidding
             connection.query({
-                sql: 'SELECT time FROM history WHERE username=? AND bid=? AND iid=? AND DATE_SUB(NOW(),INTERVAL ? HOUR) < time',
-                values:[username,bid,itemid,TIME_PENALTY]
-            },function(err, time_res, fields){
+                sql: 'SELECT * FROM buy WHERE bid= ? AND itemid =?',
+                values:[bid,itemid]
+            },function(err,buy_res,fields){
                 if(err){
                     console.log(err);
                     response.sendStatus(500);
-                } else if (time_res.length != 0){
-                    response.sendStatus(403);
+                } else if (buy_res.length == 0){
+                    response.sendStatus(406);
                 }else{
-
-                    //get the description from buy
+                    //check whether the user is eligible for bidding
                     connection.query({
-                        sql: 'SELECT itemname, description FROM buy WHERE itemid = ?',
-                        values:[req.body.barcode],
-                    }, function(err, desp_res,fields){
+                        sql: 'SELECT time FROM history WHERE username=? AND bid=? AND iid=? AND DATE_SUB(NOW(),INTERVAL ? HOUR) < time',
+                        values:[username,bid,itemid,TIME_PENALTY]
+                    },function(err, time_res, fields){
                         if(err){
                             console.log(err);
                             response.sendStatus(500);
-                        }else if (desp_res.length== 0){
-                            response.sendStatus(500);
+                        } else if (time_res.length != 0){
+                            response.sendStatus(403);
                         }else{
-                            reponse.send(desp_res);
-                        }// endd else
-                    });// end query  of descripton
 
-                }// end else
-            });// end  query of time
+                            //get the description from buy
+                            connection.query({
+                                sql: 'SELECT itemname, description FROM buy WHERE itemid = ?',
+                                values:[req.body.barcode],
+                            }, function(err, desp_res,fields){
+                                if(err){
+                                    console.log(err);
+                                    response.sendStatus(500);
+                                }else if (desp_res.length== 0){
+                                    response.sendStatus(500);
+                                }else{
+                                    reponse.send(desp_res);
+                                }// endd else
+                            });// end query  of descripton
 
+                        }// end else
+                    });// end  query of time
+
+                }  // end else
+            });// end query of buy
         }// end else
     });// end query of bid
 
@@ -239,7 +251,7 @@ app.get('/bid',function(req,res){
                     console.log(err);
                     response.sendStatus(500);
                 }else{
-                    response.sendStatus(200);
+                    response.sendStatus(202);
                 }// end else
             });  // end query of insert
         }// end else
