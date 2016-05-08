@@ -88,7 +88,7 @@ connection.connect(function(err){
 // });
 
 app.get('/',function(req,response){
-    console.lgo(req.body);
+    console.log(req.body);
 });
 
 //===============ROUTES===============
