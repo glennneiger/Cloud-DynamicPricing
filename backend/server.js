@@ -88,7 +88,7 @@ connection.connect(function(err){
 // });
 
 app.get('/',function(req,response){
-    console.log(req.body);
+    console.log(req.query);
 });
 
 //===============ROUTES===============
@@ -97,10 +97,10 @@ app.get('/signup', function (req, response) {
      * get the username  and password
      *
     */
-    console.log(req.body);
+    console.log(req.query.username);
     var user = {
-        username: req.body.username,
-        password: req.body.password
+        username: req.query.username,
+        password: req.query.password
     };
     // check whether the username has been used
     connection.query({
@@ -127,10 +127,10 @@ app.get('/signup', function (req, response) {
 });
 
 app.get('/login', function(req, response){
-    console.log(req.body);
+    console.log(req.query);
     var user = {
-        username: req.body.username,
-        password: req.body.password
+        username: req.query.username,
+        password: req.query.password
     };
     // check the username and password
     connection.query({
@@ -152,8 +152,8 @@ app.get('/login', function(req, response){
 
 
 app.get('/profile', function(req,resonse){
-    console.log(req.body);
-    var username = req.body.username;
+    console.log(req.query);
+    var username = req.query.username;
     connection.query({
         sql: 'SELECT * FROM history WHERE username= ?',
         values:[username],
@@ -169,14 +169,14 @@ app.get('/profile', function(req,resonse){
 
 
 app.get('/scan',function(req,response){
-    console.log(req.body);
+    console.log(req.query);
     var bid = 0;
-    var itemid = req.body.barcode;
-    var username = req.body.username;
+    var itemid = req.query.barcode;
+    var username = req.query.username;
     // get  the bid by the business id
     connection.query({
         sql: 'SELECT b_id FROM business WHERE b_name= ?',
-        values:[req.body.businessname],
+        values:[req.query.businessname],
     }, function(err, bid_res,fields){
         if(err){
             console.log(err);
@@ -234,15 +234,15 @@ app.get('/scan',function(req,response){
 });// end scan function
 
 app.get('/bid',function(req,res){
-    console.log(req.body);
-    var bid_price = req.body.bid_price;
-    var itemid = req.body.barcode;
-    var username = req.body.username;
+    console.log(req.query);
+    var bid_price = req.query.bid_price;
+    var itemid = req.query.barcode;
+    var username = req.query.username;
     var bid = 0;
     // get  the bid by the business id
     connection.query({
         sql: 'SELECT b_id FROM business WHERE b_name= ?',
-        values:[req.body.businessname],
+        values:[req.query.businessname],
     }, function(err, bid_res,fields){
         if(err){
             console.log(err);
