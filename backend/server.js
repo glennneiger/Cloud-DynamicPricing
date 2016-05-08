@@ -144,7 +144,7 @@ app.get('/login', function(req, response){
           else if (res.length != 0){
               response.sendStatus(202);
           }else{
-              response.senStatus(406);
+              response.sendStatus(406);
           }
     });
 
