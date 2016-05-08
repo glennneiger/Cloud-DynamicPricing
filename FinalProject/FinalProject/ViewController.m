@@ -34,25 +34,51 @@
 
 - (IBAction)landButtonWasTyped:(id)sender {
     
-    NSString *post = [NSString stringWithFormat:@"&Username=%@&Password=%@",@"username",@"password"];
+    // -------------------- Method 1 --------------------
     
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+//    NSString *post = [NSString stringWithFormat:@"&Username=%@&Password=%@",@"username",@"password"];
+//    
+//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//
+//    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+//    
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    
+//    [request setURL:[NSURL URLWithString:@"127.0.0.1"]];
+//    
+//    [request setHTTPMethod:@"POST"];
+//    
+//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//    
+//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    
+//    [request setHTTPBody:postData];
+//    
+//    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
-    [request setURL:[NSURL URLWithString:@"127.0.0.1"]];
+    // -------------------- Method 2 --------------------
     
-    [request setHTTPMethod:@"POST"];
+//    NSString *myRequestString = [[NSString alloc] initWithFormat:@"name=%@&pwd=%@", self.username, self.password];
+//    NSData *myRequestData = [ NSData dataWithBytes: [ myRequestString UTF8String ] length: [ myRequestString length ] ];
+//    NSMutableURLRequest *request = [ [ NSMutableURLRequest alloc ] initWithURL: [ NSURL URLWithString:@"http://url.com/iphone/iphone.php/?"]];
+//    
+//    [request setHTTPMethod: @"POST"];
+//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+//    [request setHTTPBody: myRequestData];
+//    
+//    NSURLResponse *response;
+//    NSError *err;
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse:&response error:&err];
+//    NSString *content = [NSString stringWithUTF8String:[returnData bytes]];
+//    NSLog(@"responseData: %@", content);
+//    
+//    NSString* responseString = [[NSString alloc] initWithData:returnData encoding:NSNonLossyASCIIStringEncoding];
+//    if ([content isEqualToString:responseString])
+//    {
+//        
+//    }
     
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
-    [request setHTTPBody:postData];
-    
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
     
     
     
