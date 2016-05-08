@@ -16,6 +16,9 @@
 		185D7FC41CDE9A4E00593CDB /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7FC31CDE9A4E00593CDB /* MasterViewController.m */; };
 		185D7FC71CDE9AA100593CDB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7FC61CDE9AA100593CDB /* DetailViewController.m */; };
 		185D7FC81CDEA29400593CDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185D7FB61CDE738C00593CDB /* Main.storyboard */; };
+		185D7FCB1CDFB84300593CDB /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7FCA1CDFB84300593CDB /* RegistViewController.m */; };
+		185D7FDA1CDFD00000593CDB /* apriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7FD91CDFD00000593CDB /* apriceViewController.m */; };
+		185D7FDD1CDFD08500593CDB /* epriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7FDC1CDFD08500593CDB /* epriceViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,12 @@
 		185D7FC31CDE9A4E00593CDB /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		185D7FC51CDE9AA100593CDB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		185D7FC61CDE9AA100593CDB /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		185D7FC91CDFB84300593CDB /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
+		185D7FCA1CDFB84300593CDB /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
+		185D7FD81CDFD00000593CDB /* apriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apriceViewController.h; sourceTree = "<group>"; };
+		185D7FD91CDFD00000593CDB /* apriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = apriceViewController.m; sourceTree = "<group>"; };
+		185D7FDB1CDFD08500593CDB /* epriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = epriceViewController.h; sourceTree = "<group>"; };
+		185D7FDC1CDFD08500593CDB /* epriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = epriceViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,10 +100,16 @@
 				1828134D1CB9828C00EA63C3 /* AppDelegate.m */,
 				1828134F1CB9828C00EA63C3 /* ViewController.h */,
 				182813501CB9828C00EA63C3 /* ViewController.m */,
+				185D7FC91CDFB84300593CDB /* RegistViewController.h */,
+				185D7FCA1CDFB84300593CDB /* RegistViewController.m */,
 				185D7FC21CDE9A4E00593CDB /* MasterViewController.h */,
 				185D7FC31CDE9A4E00593CDB /* MasterViewController.m */,
 				185D7FC51CDE9AA100593CDB /* DetailViewController.h */,
 				185D7FC61CDE9AA100593CDB /* DetailViewController.m */,
+				185D7FD81CDFD00000593CDB /* apriceViewController.h */,
+				185D7FD91CDFD00000593CDB /* apriceViewController.m */,
+				185D7FDB1CDFD08500593CDB /* epriceViewController.h */,
+				185D7FDC1CDFD08500593CDB /* epriceViewController.m */,
 				185D7FB61CDE738C00593CDB /* Main.storyboard */,
 				182813551CB9828C00EA63C3 /* Images.xcassets */,
 				182813571CB9828C00EA63C3 /* LaunchScreen.xib */,
@@ -229,8 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185D7FDD1CDFD08500593CDB /* epriceViewController.m in Sources */,
 				185D7FC71CDE9AA100593CDB /* DetailViewController.m in Sources */,
 				185D7FC41CDE9A4E00593CDB /* MasterViewController.m in Sources */,
+				185D7FDA1CDFD00000593CDB /* apriceViewController.m in Sources */,
+				185D7FCB1CDFB84300593CDB /* RegistViewController.m in Sources */,
 				182813511CB9828C00EA63C3 /* ViewController.m in Sources */,
 				1828134E1CB9828C00EA63C3 /* AppDelegate.m in Sources */,
 				1828134B1CB9828C00EA63C3 /* main.m in Sources */,
