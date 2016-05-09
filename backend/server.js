@@ -4,7 +4,7 @@ var port = '3306';
 var user = 'cloud';
 var password = 'dynamicpricing';
 var database = 'dynamicpricing';
-var qr = require('qr-image');
+// var qr = require('qr-image');
 var nodemailer = require('nodemailer');
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://dynamicpricingcloud%40gmail.com:dynamicPricing2016@smtp.gmail.com');
@@ -304,10 +304,10 @@ app.get('/transaction',function(req,response){
                 if (err){
                     console.log(err);
                     response.sendStatus(500);
-                }else if (bid_price != 0){
-                     var code = qr.image('{from: dynamic pricing, ' + 'to:'+businessname +', barcode:'+ itemid +', bid_price:' + bid_price+'}', { type: 'svg' });
-  		             response.type('svg');
-  		             code.pipe(response);
+                // }else if (bid_price != 0){
+                //      var code = qr.image('{from: dynamic pricing, ' + 'to:'+businessname +', barcode:'+ itemid +', bid_price:' + bid_price+'}', { type: 'svg' });
+  		      //        response.type('svg');
+  		      //        code.pipe(response);
                 } else{
                     response.sendStatus(200);
                 }// end else

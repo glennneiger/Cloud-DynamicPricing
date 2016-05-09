@@ -45,7 +45,7 @@ Parameters: barcode, username, businessname, bid_price
 bid_price pass 0 value, if the transaction fails.
 After the user successfully bid the product, the front end should call the end point.
 If the server has internal failure, it will response with status code 500;
-Otherwise, everything is OK, it will response with qr barcode and status code 200.
+Otherwise, everything is OK, it will response with  status code 200.
 
 7.forget password interface:
 End point: /forgetPassword
