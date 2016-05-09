@@ -106,7 +106,7 @@ app.get('/signup', function (req, response) {
     var user = {
         username: req.query.username,
         password: req.query.password,
-        email: req.query.emial,
+        email: req.query.email,
     };
     // check whether the username has been used
     connection.query({
