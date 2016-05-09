@@ -5,7 +5,7 @@
 //  Created by 周沛然 on 4/9/16.
 //  Copyright (c) 2016 zzzl. All rights reserved.
 //
-
+#import "BidViewController.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -57,9 +57,19 @@
 //    [request setHTTPBody:postData];
 //    
 //    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8081/login?username=%@&password=%@", self.usernameTextField.text, self.passwordTextField.text];
+    NSRange whiteSpaceRange = [self.usernameTextField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (whiteSpaceRange.location != NSNotFound) {
+        NSLog(@"Found whitespace");
+        UIAlertView *whiteSpaceAlert = [[UIAlertView alloc] initWithTitle:@"Username is not valid"
+                                                             message:@"Please re-enter username!"
+                                                            delegate:self
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        self.usernameTextField.text = @"";
+        [whiteSpaceAlert show];
+    }
+    else{
+    NSString *urlStr = [NSString stringWithFormat:@"http://160.39.139.24:8081/login?username=%@&password=%@", self.usernameTextField.text, self.passwordTextField.text];
     NSLog(@"0");
     NSURL *url = [NSURL URLWithString:urlStr];
     NSLog(@"1");
@@ -80,6 +90,7 @@
     
     if(isSuccess){
         NSLog(@"haha");
+        
         [self performSegueWithIdentifier:@"login" sender:self];
     }
     if(isFail){
@@ -93,44 +104,9 @@
         [loginAlert show];
         NSLog(@"koko");
     }
+    }
     
     
-    // -------------------- Method 2 --------------------
-    
-//    NSString *post = [NSString stringWithFormat:@"username=%@&password=%@",self.usernameTextField.text, self.passwordTextField.text];
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setURL:[NSURL URLWithString:@"127.0.0.1:8081"]];
-//    [request setHTTPMethod:@"GET"];
-//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//    NSHTTPURLResponse *urlResponse = nil;
-//    NSError *error = [[NSError alloc] init];
-    
-    
-    
-    
-    // 判断username 和 password是否匹配，if... else...
-//    BOOL isUsernameEqual = [self.username isEqualToString:[self.usernameTextField text]];
-//    BOOL isPasswordEqual = [self.password isEqualToString:[self.passwordTextField text]];
-    
-//    if(isUsernameEqual && isPasswordEqual){
-//        
-//        NSLog(@"OK!");
-//        
-//        [self performSegueWithIdentifier:@"login" sender:self]; // 从当前框转换到login界面
-//    }
-//    else{
-//        
-//        // 如果username 或者 password输入错误，则弹出提醒框，清空输入框内容
-//        UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Fail to Login"
-//                                                       message:@"Your Username or Password is wrong!"
-//                                                       delegate:self
-//                                                       cancelButtonTitle:@"OK"
-//                                                       otherButtonTitles:nil];
-//        self.usernameTextField.text = @"";
-//        self.passwordTextField.text = @"";
-//        [loginAlert show];
-//        NSLog(@"NO!");
-//    }
 }
 
 

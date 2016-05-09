@@ -26,6 +26,20 @@
 
 - (IBAction)registButtonIsTyped:(id)sender {
     
+    NSRange whiteSpaceRange = [self.registUsernameTextField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (whiteSpaceRange.location != NSNotFound) {
+        NSLog(@"Found whitespace");
+        UIAlertView *whiteSpaceAlert2 = [[UIAlertView alloc] initWithTitle:@"Username is not valid"
+                                                                  message:@"Please re-enter username!"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"OK"
+                                                        otherButtonTitles:nil];
+        self.registUsernameTextField.text = @"";
+        [whiteSpaceAlert2 show];
+    }
+    else{
+    
+    
     BOOL passwordIsEqual = [_registPasswordTextField.text isEqualToString:(_registPassword2TextField.text)];
     
     BOOL textField1IsEmpty = [_registUsernameTextField.text isEqualToString:(@"")];
@@ -47,7 +61,7 @@
     if(passwordIsEqual){
         NSLog(@"Equal");
 
-        NSString *urlStr2 = [NSString stringWithFormat:@"http://localhost:8081/signup?username=%@&password=%@", self.registUsernameTextField.text, self.registPasswordTextField.text];
+        NSString *urlStr2 = [NSString stringWithFormat:@"http://160.39.139.24:8081/signup?username=%@&password=%@", self.registUsernameTextField.text, self.registPasswordTextField.text];
         NSURL *url2 = [NSURL URLWithString:urlStr2];
         NSURLRequest *request2 = [NSURLRequest requestWithURL:url2];
         NSURLResponse *response2;
@@ -98,7 +112,7 @@
         
     }
     }
-    
+    }
     
 }
 
