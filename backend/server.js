@@ -9,7 +9,7 @@ var nodemailer = require('nodemailer');
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://dynamicpricingcloud%40gmail.com:dynamicPricing2016@smtp.gmail.com');
 //var fs = require('fs');
-var TIME_PENALTY = 24; // Number of hours to stop user from retry bidding
+var TIME_PENALTY = 24; // Number of hours to stop user from retry biddingF
 if (length == 3){
     host = process.argv[2];
 }else if (length == 7){
@@ -239,7 +239,7 @@ app.get('/bid',function(req,response){
                 } else if (buy_res.length == 0){
                     response.sendStatus(500);
                 }else{
-                    price = parseInt(buy_res[0]["price"]);
+                    price = parseFloat(buy_res[0]["price"]);
                     //check whether the user is eligible for bidding
                     connection.query({
                         sql: 'SELECT time FROM history WHERE username=? AND bid=? AND iid=? AND DATE_SUB(NOW(),INTERVAL ? HOUR) < time',
@@ -280,7 +280,7 @@ app.get('/bid',function(req,response){
 
 app.get('/transaction',function(req,response){
     console.log(req.query);
-    var bid_price = parseInt(req.query.bid_price);
+    var bid_price = parseFloat(req.query.bid_price);
     var itemid = req.query.barcode;
     var username = req.query.username;
     var bid = 0;
