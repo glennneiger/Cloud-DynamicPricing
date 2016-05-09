@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/zljchloe/Cloud-DynamicPricing#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "nodemailer": "^2.3.2",
+    "qr-image": "^3.1.0"
   }
 }

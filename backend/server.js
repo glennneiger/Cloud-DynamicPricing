@@ -4,7 +4,10 @@ var port = '3306';
 var user = 'cloud';
 var password = 'dynamicpricing';
 var database = 'dynamicpricing';
-var qr = require('qr-image');  
+var qr = require('qr-image');
+var nodemailer = require('nodemailer');
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://dynamicpricingcloud%40gmail.com:dynamicPricing2016@smtp.gmail.com');
 //var fs = require('fs');
 var TIME_PENALTY = 24; // Number of hours to stop user from retry bidding
 if (length == 3){
@@ -102,7 +105,8 @@ app.get('/signup', function (req, response) {
     console.log(req.query.username);
     var user = {
         username: req.query.username,
-        password: req.query.password
+        password: req.query.password,
+        email: req.query.emial,
     };
     // check whether the username has been used
     connection.query({
@@ -188,7 +192,7 @@ app.get('/scan',function(req,response){
             response.sendStatus(406);
         }else{
             // check whether the item is under dynamic pricing
-            bid = bid_res[0]["b_id"];
+            bid = parseInt(bid_res[0]["b_id"]);
             connection.query({
                 sql: 'SELECT price FROM buy WHERE b_id= ? AND itemid =?',
                 values:[bid,itemid]
@@ -224,7 +228,7 @@ app.get('/bid',function(req,response){
             response.sendStatus(500);
         }else{
             // check whether the item is under dynamic pricing
-            bid = bid_res[0]["b_id"];
+            bid = parseInt(bid_res[0]["b_id"]);
             connection.query({
                 sql: 'SELECT price FROM buy WHERE b_id= ? AND itemid =?',
                 values:[bid,itemid]
@@ -235,7 +239,7 @@ app.get('/bid',function(req,response){
                 } else if (buy_res.length == 0){
                     response.sendStatus(500);
                 }else{
-                    price = buy_res[0]["price"];
+                    price = parseInt(buy_res[0]["price"]);
                     //check whether the user is eligible for bidding
                     connection.query({
                         sql: 'SELECT time FROM history WHERE username=? AND bid=? AND iid=? AND DATE_SUB(NOW(),INTERVAL ? HOUR) < time',
@@ -276,7 +280,7 @@ app.get('/bid',function(req,response){
 
 app.get('/transaction',function(req,response){
     console.log(req.query);
-    var bid_price = req.query.bid_price;
+    var bid_price = parseInt(req.query.bid_price);
     var itemid = req.query.barcode;
     var username = req.query.username;
     var bid = 0;
@@ -300,17 +304,66 @@ app.get('/transaction',function(req,response){
                 if (err){
                     console.log(err);
                     response.sendStatus(500);
-                }else{
+                }else if (bid_price != 0){
                      var code = qr.image('{from: dynamic pricing, ' + 'to:'+businessname +', barcode:'+ itemid +', bid_price:' + bid_price+'}', { type: 'svg' });
-  		response.type('svg');
-  		code.pipe(response);
+  		             response.type('svg');
+  		             code.pipe(response);
+                } else{
+                    response.sendStatus(200);
                 }// end else
             });  // end query of insert
         }// end else
     });// end query of find bid
 });
 
+app.get('/forgetPassword',function(req,response){
+    username = req.query.username;
+    email = req.query.email;
+    password = "";
+
+    connection.query({
+        sql: 'SELECT password FROM user WHERE username=? AND email = ? ',
+        values:[username, email],
+    }, function(err, pass_res,fields){
+        if (err){
+            console.log(err);
+            response.sendStatus(500);
+        }else if (pass_res.length == 0){
+            response.sendStatus(406);
+        }else{
+            password = pass_res[0]['password'];
+            // setup e-mail data with unicode symbols
+            var mailOptions = {
+                from: '"dynamic pricing Inc" <dynamicpricingcloud@gmail.com>', // sender address
+                to: email, // list of receivers
+                subject: 'password recovery', // Subject line
+                text: 'Your username:' + username +"\n Your password:"+password, // plaintext body
+            };
+
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log(error);
+                    response.sendStatus(500);
+                }else{
+                    console.log('Message sent: ' + info.response);
+                    response.sendStatus(200);
+                }
+            });
+
+
+
+
+        }
+    });
+
+
+
+
+});
+
 app.get('/amazon', function(req,res){
+
 
 });
 

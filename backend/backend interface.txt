@@ -4,7 +4,7 @@ All these interface are http end points, and front end reach these end points th
 
 1.sign up interface:
 End point:  /signup
-Parameters : username and  password
+Parameters : username and  password, email
 If the server has internal failure, it will response with status code 500;
 If the  username has been used, it will response with status code 406;
 Otherwise, everything is OK, and will response with status code 202.
@@ -30,19 +30,26 @@ If the server has internal failure, it will response with status code 500;
 If the item is not under dynamic pricing, it will response with status code 406
 Otherwise it will response with the status code is 200.
 
-5.scan interface:
+5.bid interface:
 End point: /bid
 Parameters: barcode, username, businessname
-We the frontend begin to bid price, it query this end point tot obtain the lowest expected price of the merchant and the description of the product.
+We the front end begin to bid price, it query this end point tot obtain the lowest expected price of the merchant and the description of the product.
 If the server has internal failure, it will response with status code 500;
 If the user is ineligible for this item (the user has bid it before ), it will response with status code 403
 Otherwise it will response with the item name, item description and its price, and the status code is 200.
 
 
-6. transaction interface:
-End ponts: /transaction
+6.transaction interface:
+End point: /transaction
 Parameters: barcode, username, businessname, bid_price
 bid_price pass 0 value, if the transaction fails.
 After the user successfully bid the product, the front end should call the end point.
 If the server has internal failure, it will response with status code 500;
 Otherwise, everything is OK, it will response with qr barcode and status code 200.
+
+7.forget password interface:
+End point: /forgetPassword
+Parameters: username, email
+If the server has internal failure, it will response with status code 500;
+If the username and email is not match, it will response with status code 406;
+Otherwise if everything is OK, it will send the password to the email and response with status code 200.
