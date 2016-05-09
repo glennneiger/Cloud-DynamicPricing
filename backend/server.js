@@ -183,7 +183,7 @@ app.get('/scan',function(req,response){
             console.log(err);
             response.sendStatus(500);
         } else if (bid_res.length == 0){
-            response.sendStatus(404);
+            response.sendStatus(406);
         }else{
             // check whether the item is under dynamic pricing
             bid = bid_res[0]["b_id"];
@@ -219,7 +219,7 @@ app.get('/bid',function(req,response){
             console.log(err);
             response.sendStatus(500);
         } else if (bid_res.length == 0){
-            response.sendStatus(404);
+            response.sendStatus(500);
         }else{
             // check whether the item is under dynamic pricing
             bid = bid_res[0]["b_id"];
@@ -231,7 +231,7 @@ app.get('/bid',function(req,response){
                     console.log(err);
                     response.sendStatus(500);
                 } else if (buy_res.length == 0){
-                    response.sendStatus(406);
+                    response.sendStatus(500);
                 }else{
                     price = buy_res[0]["price"];
                     //check whether the user is eligible for bidding
@@ -287,7 +287,7 @@ app.get('/transaction',function(req,response){
             console.log(err);
             response.sendStatus(500);
         } else if (bid_res.length == 0){
-            response.sendStatus(404);
+            response.sendStatus(500);
         }else{
             bid = bid_res[0]["b_id"];
             connection.query({

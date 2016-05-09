@@ -27,7 +27,6 @@ End point: /scan
 Parameters: barcode, businessname
 After the front end scan the barcode, it should call this end point.
 If the server has internal failure, it will response with status code 500;
-If the business is not found, if will response with status code 404
 If the item is not under dynamic pricing, it will response with status code 406
 Otherwise it will response with the status code is 200.
 
@@ -36,8 +35,6 @@ End point: /bid
 Parameters: barcode, username, businessname
 We the frontend begin to bid price, it query this end point tot obtain the lowest expected price of the merchant and the description of the product.
 If the server has internal failure, it will response with status code 500;
-If the business is not found, if will response with status code 404
-If the item is not under dynamic pricing, it will response with status code 406
 If the user is ineligible for this item (the user has bid it before ), it will response with status code 403
 Otherwise it will response with the item name, item description and its price, and the status code is 200.
 
@@ -47,5 +44,4 @@ End ponts: /transaction
 Parameters: barcode, username, businessname, bid_price
 After the user successfully bid the product, the front end should call the end point.
 If the server has internal failure, it will response with status code 500;
-If the business is not found, if will response with status code 404
 Otherwise, everything is OK, it will response with status code 202.
