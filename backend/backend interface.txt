@@ -53,3 +53,10 @@ Parameters: username, email
 If the server has internal failure, it will response with status code 500;
 If the username and email is not match, it will response with status code 406;
 Otherwise if everything is OK, it will send the password to the email and response with status code 200.
+
+8.reset password interface:
+END point: /resetPassword
+Parameters: username oldpassword newpassword
+If the server has internal failure, it will response with status code 500;
+If the username and oldpassword is not correct, it will response with status code 406;
+Otherwise if everythig is OK, it will  update the oldpassword by the newpassword and response with status code 202.

@@ -362,6 +362,36 @@ app.get('/forgetPassword',function(req,response){
 
 });
 
+
+app.get('/resetPassword',function(req,response){
+    username = req.query.username;
+    oldpassword= req.query.oldpassword;
+    newpassword= req.query.newpassword;
+    connection.query({
+        sql: 'SELECT * FROM user WHERE username=? AND password =?',
+        values:[username,oldpassword],
+    }, function(err, pass_res,fields){
+        if (err){
+            console.log(err);
+            response.sendStatus(500);
+        }else if (pass_res.length== 0 ){
+            response.sendStatus(406);
+        }else{
+            connection.query({
+                sql: 'UPDATE user SET password=?  WHERE username=?',
+                values:[newpassword, username],
+            }, function(err, pass_res,fields){
+                if (err){
+                    console.log(err);
+                    response.sendStatus(500);
+                }else{
+                    response.sendStatus(202);
+                }
+            });
+
+        }
+    });
+});
 app.get('/amazon', function(req,res){
 
 
