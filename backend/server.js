@@ -170,8 +170,42 @@ app.get('/profile', function(req,response){
     });
 });
 
-
 app.get('/scan',function(req,response){
+    console.log(req.query);
+    var bid = 0;
+    var itemid = req.query.barcode;
+    // get  the bid by the business id
+    connection.query({
+        sql: 'SELECT b_id FROM business WHERE b_name= ?',
+        values:[req.query.businessname],
+    }, function(err, bid_res,fields){
+        if(err){
+            console.log(err);
+            response.sendStatus(500);
+        } else if (bid_res.length == 0){
+            response.sendStatus(404);
+        }else{
+            // check whether the item is under dynamic pricing
+            bid = bid_res[0]["b_id"];
+            connection.query({
+                sql: 'SELECT price FROM buy WHERE b_id= ? AND itemid =?',
+                values:[bid,itemid]
+            },function(err,buy_res,fields){
+                if(err){
+                    console.log(err);
+                    response.sendStatus(500);
+                } else if (buy_res.length == 0){
+                    response.sendStatus(406);
+                }else{
+		    response.sendStatus(200);
+		}
+	    });
+	}
+    });
+});
+
+
+app.get('/bid',function(req,response){
     console.log(req.query);
     var bid = 0;
     var itemid = req.query.barcode;
@@ -238,7 +272,7 @@ app.get('/scan',function(req,response){
 
 });// end scan function
 
-app.get('/bid',function(req,response){
+app.get('/transaction',function(req,response){
     console.log(req.query);
     var bid_price = req.query.bid_price;
     var itemid = req.query.barcode;
