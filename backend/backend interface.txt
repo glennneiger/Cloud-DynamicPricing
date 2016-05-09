@@ -44,4 +44,4 @@ End ponts: /transaction
 Parameters: barcode, username, businessname, bid_price
 After the user successfully bid the product, the front end should call the end point.
 If the server has internal failure, it will response with status code 500;
-Otherwise, everything is OK, it will response with status code 202.
+Otherwise, everything is OK, it will response with qr barcode and status code 200.

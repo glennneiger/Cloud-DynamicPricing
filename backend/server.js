@@ -4,6 +4,8 @@ var port = '3306';
 var user = 'cloud';
 var password = 'dynamicpricing';
 var database = 'dynamicpricing';
+var qr = require('qr-image');  
+//var fs = require('fs');
 var TIME_PENALTY = 24; // Number of hours to stop user from retry bidding
 if (length == 3){
     host = process.argv[2];
@@ -298,7 +300,9 @@ app.get('/transaction',function(req,response){
                     console.log(err);
                     response.sendStatus(500);
                 }else{
-                    response.sendStatus(202);
+                     var code = qr.image('{from: dynamic pricing, '+'barcode:'+ itemid +', bid_price:' + bid_price+'}', { type: 'svg' });
+  		response.type('svg');
+  		code.pipe(response);
                 }// end else
             });  // end query of insert
         }// end else
