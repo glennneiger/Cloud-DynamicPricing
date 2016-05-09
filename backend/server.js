@@ -280,10 +280,11 @@ app.get('/transaction',function(req,response){
     var itemid = req.query.barcode;
     var username = req.query.username;
     var bid = 0;
+    var businessname = req.query.businessname;
     // get  the bid by the business id
     connection.query({
         sql: 'SELECT b_id FROM business WHERE b_name= ?',
-        values:[req.query.businessname],
+        values:[businessname],
     }, function(err, bid_res,fields){
         if(err){
             console.log(err);
@@ -300,7 +301,7 @@ app.get('/transaction',function(req,response){
                     console.log(err);
                     response.sendStatus(500);
                 }else{
-                     var code = qr.image('{from: dynamic pricing, '+'barcode:'+ itemid +', bid_price:' + bid_price+'}', { type: 'svg' });
+                     var code = qr.image('{from: dynamic pricing, ' + 'to:'+businessname +', barcode:'+ itemid +', bid_price:' + bid_price+'}', { type: 'svg' });
   		response.type('svg');
   		code.pipe(response);
                 }// end else
