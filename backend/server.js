@@ -7,6 +7,19 @@ var database = 'dynamicpricing';
 // var qr = require('qr-image');
 var nodemailer = require('nodemailer');
 // create reusable transporter object using the default SMTP transport
+// var transporter = nodemailer.createTransport("SMTP", {
+//   service: "Gmail",
+//   auth: {
+//     XOAuth2: {
+//       user: "dynamicpricingcloud@gmail.com", // Your gmail address.
+//                                             // Not @developer.gserviceaccount.com
+//       clientId: "80958301885-bng47a9lf4j5lhdu0mt63te9su7gledv.apps.googleusercontent.com",
+//       clientSecret: "G17twp_CaZCL41c9oHWtCTJo",
+//       refreshToken: "1/bkfgJpvrd8ZmfacZ-hbI1_sihj_PNOEJosq-DrHW0UZ90RDknAdJa_sgfheVM0XT"
+//     }
+//   }
+// });
+
 var transporter = nodemailer.createTransport('smtps://dynamicpricingcloud%40gmail.com:dynamicPricing2016@smtp.gmail.com');
 //var fs = require('fs');
 var TIME_PENALTY = 24; // Number of hours to stop user from retry biddingF
@@ -337,7 +350,7 @@ app.get('/forgetPassword',function(req,response){
                 from: '"dynamic pricing Inc" <dynamicpricingcloud@gmail.com>', // sender address
                 to: email, // list of receivers
                 subject: 'password recovery', // Subject line
-                text: 'Your username:' + username +"\n Your password:"+password, // plaintext body
+                text: 'Dear customer:\n \n You have request a recovery of password.\n Your username:' + username +"\n Your password:"+password + '\n \n \n Thank you for using Bideal! \n dynamic pricing team', // plaintext body
             };
 
             // send mail with defined transport object
