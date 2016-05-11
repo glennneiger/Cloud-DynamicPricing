@@ -174,7 +174,7 @@ app.get('/profile', function(req,response){
     console.log(req.query);
     var username = req.query.username;
     connection.query({
-        sql: 'SELECT * FROM history WHERE username= ?',
+        sql: 'SELECT b_name ,itemname , bid_price,time FROM history, business,item WHERE username= ? AND history.bid=business.b_id AND history.iid= item.itemid',
         values:[username],
     }, function(err, res,fields){
             if(err){
@@ -184,7 +184,11 @@ app.get('/profile', function(req,response){
                 response.sendStatus(404)
 
             }else {
-                response.send(res);
+		record = "";
+		for (var i = 0 ; i <res.length; i++){
+			record= record + res[i]['b_name'] + " "+res[i]['itemname'] +" "+res[i]['bid_price']+"$"+" " +res[i]['time']+"\n";
+		}
+                response.send(record);
             }
     });
 });
