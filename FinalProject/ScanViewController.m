@@ -5,6 +5,7 @@
 //  Created by 周沛然 on 5/8/16.
 //  Copyright © 2016 zzzl. All rights reserved.
 //
+#import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 #import "ScanViewController.h"
 
@@ -39,7 +40,7 @@
     _label.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
     _label.textColor = [UIColor whiteColor];
     _label.textAlignment = NSTextAlignmentCenter;
-    _label.text = @"(none)";
+    _label.text = @"Starting scanning!";
     [self.view addSubview:_label];
     
     _session = [[AVCaptureSession alloc] init];
@@ -102,10 +103,33 @@
     
     _highlightView.frame = highlightViewRect;
     
-    BOOL haha = [detectionString isEqualToString:(@"78590")];
+    NSLog(@"%@", detectionString);  // 查看已经扫描到的条形码
     
+    AppDelegate *appDelegate12 = [[UIApplication sharedApplication] delegate];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"http://209.2.222.143:8081/scan?barcode=%@&businessname=%@", detectionString, appDelegate12.businessnameGlobal]; // 查看商品是否有活动
+    // 通过匹配：barcode, businessname来决定物品是否正在进行活动。
+    
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLResponse *response;
+    NSError *error;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", responseStr);
+    
+    
+    
+    BOOL haha = [responseStr isEqualToString:(@"OK")];
+    
+    // 如果返回ok，则表示此标签正在进行活动
     if(haha){
         NSLog(@"right");
+        
+        // 因为刚刚扫描的条形码有活动，所以设置全局变量: Barcode, Businessname之前已经设置过
+        AppDelegate *appDelegate2 = [[UIApplication sharedApplication] delegate];    // Set global value
+        appDelegate2.barcodeGlobal = detectionString;
+        
         [_session stopRunning];
         
         UIAlertView *qianjinAlert = [[UIAlertView alloc] initWithTitle:@"Scan Successfully!"
@@ -118,7 +142,10 @@
         
         [self performSegueWithIdentifier:@"qianjin" sender:self];
     }
+    
+    // 如果该条形码没有参加活动，退回到扫描页面。
     else{
+        
         [_session stopRunning];
         
         
@@ -129,13 +156,14 @@
                                                      otherButtonTitles:nil];
         [houtuiAlert show];
         
-        
         [self performSegueWithIdentifier:@"houtui" sender:self];
     }
     
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
 
 
 - (void)didReceiveMemoryWarning {

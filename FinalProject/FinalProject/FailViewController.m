@@ -1,36 +1,33 @@
 //
-//  epriceViewController.m
+//  FailViewController.m
 //  FinalProject
 //
-//  Created by 周沛然 on 5/8/16.
-//  Copyright (c) 2016 zzzl. All rights reserved.
+//  Created by 周沛然 on 5/10/16.
+//  Copyright © 2016 zzzl. All rights reserved.
 //
 
-#import "epriceViewController.h"
+#import "FailViewController.h"
 
-@interface epriceViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *ePrice;
+@interface FailViewController ()
 
 @end
 
-@implementation epriceViewController
+@implementation FailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *ebayString = @"http://www.ebay.com/";
-    NSURL *ebay = [NSURL URLWithString:ebayString];
-    NSURLRequest *ebayRequest = [NSURLRequest requestWithURL:ebay];
-    [_ePrice loadRequest:ebayRequest];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+- (IBAction)logout4:(id)sender {
+    [self performSegueWithIdentifier:@"failToLogin" sender:self];
+}
+- (IBAction)mainpage:(id)sender {
+    [self performSegueWithIdentifier:@"failToMainpage" sender:self];
 }
 
 /*

@@ -1,40 +1,34 @@
 //
-//  apriceViewController.m
+//  MainpageViewController.m
 //  FinalProject
 //
-//  Created by 周沛然 on 5/8/16.
-//  Copyright (c) 2016 zzzl. All rights reserved.
+//  Created by 周沛然 on 5/10/16.
+//  Copyright © 2016 zzzl. All rights reserved.
 //
 
-#import "apriceViewController.h"
+#import "MainpageViewController.h"
 
-@interface apriceViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *aPrice;
+@interface MainpageViewController ()
 
 @end
 
-@implementation apriceViewController
+@implementation MainpageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    NSString *amazonString = @"http://www.amazon.com/";
-    
-    NSURL *amazon = [NSURL URLWithString:amazonString];
-    
-    NSURLRequest *amazonRequest = [NSURLRequest requestWithURL:amazon];
-    
-    [_aPrice loadRequest:amazonRequest];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)logout6:(id)sender {
+    [self performSegueWithIdentifier:@"mainpageToLogin" sender:self];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 /*

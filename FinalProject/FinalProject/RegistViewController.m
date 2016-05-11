@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *registUsernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *registPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *registPassword2TextField;
+@property (weak, nonatomic) IBOutlet UITextField *registEmail;
 
 @end
 
@@ -26,15 +27,20 @@
 
 - (IBAction)registButtonIsTyped:(id)sender {
     
+    // 检查email是否符合格式
+    BOOL isEmailFormat = [self NSStringIsValidEmail:self.registEmail.text];
+    
+    // 检查username文本框是否包含空格
     NSRange whiteSpaceRange = [self.registUsernameTextField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
     if (whiteSpaceRange.location != NSNotFound) {
         NSLog(@"Found whitespace");
-        UIAlertView *whiteSpaceAlert2 = [[UIAlertView alloc] initWithTitle:@"Username is not valid"
+        UIAlertView *whiteSpaceAlert2 = [[UIAlertView alloc] initWithTitle:@"Username is not valid!"
                                                                   message:@"Please re-enter username!"
                                                                  delegate:self
                                                         cancelButtonTitle:@"OK"
                                                         otherButtonTitles:nil];
         self.registUsernameTextField.text = @"";
+        
         [whiteSpaceAlert2 show];
     }
     else{
@@ -45,8 +51,9 @@
     BOOL textField1IsEmpty = [_registUsernameTextField.text isEqualToString:(@"")];
     BOOL textField2IsEmpty = [_registPasswordTextField.text isEqualToString:(@"")];
     BOOL textField3IsEmpty = [_registPassword2TextField.text isEqualToString:(@"")];
+        BOOL textField4IsEmpty = [_registEmail.text isEqualToString:(@"")];
     
-    if(textField1IsEmpty || textField2IsEmpty || textField3IsEmpty){
+    if(textField1IsEmpty || textField2IsEmpty || textField3IsEmpty || textField4IsEmpty){
         UIAlertView *textfieldEmptyAlert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
                                                                      message:@"Man, text field can not be empty!"
                                                                     delegate:self
@@ -58,15 +65,21 @@
         self.registPassword2TextField.text = @"";
     }
     else{
+    
+    if(isEmailFormat){
     if(passwordIsEqual){
+        
         NSLog(@"Equal");
 
-        NSString *urlStr2 = [NSString stringWithFormat:@"http://160.39.139.24:8081/signup?username=%@&password=%@", self.registUsernameTextField.text, self.registPasswordTextField.text];
+        NSString *urlStr2 = [NSString stringWithFormat:@"http://209.2.222.143:8081/signup?username=%@&password=%@&email=%@", self.registUsernameTextField.text, self.registPasswordTextField.text, self.registEmail.text];
         NSURL *url2 = [NSURL URLWithString:urlStr2];
         NSURLRequest *request2 = [NSURLRequest requestWithURL:url2];
         NSURLResponse *response2;
         NSError *error2;
+        NSLog(@"qwerasdf");
         NSData *responseData2 = [NSURLConnection sendSynchronousRequest:request2 returningResponse:&response2 error:&error2];
+        NSLog(@"qwerasdf2");
+
         NSString *responseStr2 = [[NSString alloc] initWithData:responseData2 encoding:NSUTF8StringEncoding];
         NSLog(@"%@", responseStr2);
         
@@ -94,6 +107,7 @@
             self.registUsernameTextField.text = @"";
             self.registPasswordTextField.text = @"";
             self.registPassword2TextField.text = @"";
+            self.registEmail.text = @"";
         }
         
     }
@@ -111,17 +125,46 @@
         self.registPassword2TextField.text = @"";
         
     }
+    
+    }
+    else{
+        NSLog(@"email is wrong");
+        UIAlertView *emailFormatWrongAlert = [[UIAlertView alloc] initWithTitle:@"E-Mail format is wrong!!"
+                                                                     message:@"Please re-enter the email address"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"OK"
+                                                           otherButtonTitles:nil];
+        [emailFormatWrongAlert show];
+        self.registEmail.text = @"";
+        self.registPasswordTextField.text = @"";
+        self.registPassword2TextField.text = @"";
+    }
     }
     }
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
 
-
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = NO;
+    NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+    NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing: YES];
 }
 
 /*

@@ -1,36 +1,35 @@
 //
-//  epriceViewController.m
+//  SuccessViewController.m
 //  FinalProject
 //
-//  Created by 周沛然 on 5/8/16.
-//  Copyright (c) 2016 zzzl. All rights reserved.
+//  Created by 周沛然 on 5/9/16.
+//  Copyright © 2016 zzzl. All rights reserved.
 //
 
-#import "epriceViewController.h"
+#import "SuccessViewController.h"
 
-@interface epriceViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *ePrice;
+@interface SuccessViewController ()
 
 @end
 
-@implementation epriceViewController
+@implementation SuccessViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *ebayString = @"http://www.ebay.com/";
-    NSURL *ebay = [NSURL URLWithString:ebayString];
-    NSURLRequest *ebayRequest = [NSURLRequest requestWithURL:ebay];
-    [_ePrice loadRequest:ebayRequest];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self
+                                   selector:@selector(automaticTransfer) userInfo:nil repeats:NO];
+
+}
+
+-(void)automaticTransfer{
+    [self performSegueWithIdentifier:@"qrcode" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 /*

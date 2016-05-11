@@ -5,7 +5,7 @@
 //  Created by 周沛然 on 4/9/16.
 //  Copyright (c) 2016 zzzl. All rights reserved.
 //
-#import "BidViewController.h"
+#import "AppDelegate.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -23,6 +23,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
+
+    
     self.username = @"username"; // 假设username是 username字符串
     self.password = @"password"; //假设password是 password字符串
     
@@ -34,29 +37,6 @@
 
 - (IBAction)landButtonWasTyped:(id)sender {
     
-    // -------------------- Method 1 --------------------
-    
-//    NSString *post = [NSString stringWithFormat:@"username=%@&password=%@",self.usernameTextField.text, self.passwordTextField.text];
-//    
-//    NSLog(@"%@", post);
-//
-//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//
-//    NSString *postLength = [NSString stringWithFormat:@"%lu", [postData length]];
-//    
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    
-//    [request setURL:[NSURL URLWithString:@"127.0.0.1:8081"]];
-//    
-//    [request setHTTPMethod:@"GET"];
-//    
-//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//    
-//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//    
-//    [request setHTTPBody:postData];
-//    
-//    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     NSRange whiteSpaceRange = [self.usernameTextField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
     if (whiteSpaceRange.location != NSNotFound) {
         NSLog(@"Found whitespace");
@@ -69,7 +49,8 @@
         [whiteSpaceAlert show];
     }
     else{
-    NSString *urlStr = [NSString stringWithFormat:@"http://160.39.139.24:8081/login?username=%@&password=%@", self.usernameTextField.text, self.passwordTextField.text];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"http://209.2.222.143:8081/login?username=%@&password=%@", self.usernameTextField.text, self.passwordTextField.text];
     NSLog(@"0");
     NSURL *url = [NSURL URLWithString:urlStr];
     NSLog(@"1");
@@ -91,7 +72,12 @@
     if(isSuccess){
         NSLog(@"haha");
         
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];    // Set global value
+        appDelegate.usernameGlobal = self.usernameTextField.text;  
+        
         [self performSegueWithIdentifier:@"login" sender:self];
+        self.usernameTextField.text = @"";
+        self.passwordTextField.text = @"";
     }
     if(isFail){
         UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Fail to Login"
@@ -109,6 +95,9 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -14,6 +14,14 @@
 
 @implementation AppDelegate
 
+@synthesize usernameGlobal;
+@synthesize barcodeGlobal;
+@synthesize businessnameGlobal;
+@synthesize lowestPriceGlobal;
+@synthesize descriptionGlobal;
+@synthesize itemnameGlobal;
+@synthesize bid_price;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

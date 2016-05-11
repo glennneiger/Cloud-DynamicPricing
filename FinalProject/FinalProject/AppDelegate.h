@@ -12,5 +12,14 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+
+@property (nonatomic, retain) NSString *usernameGlobal;
+@property (nonatomic, retain) NSString *barcodeGlobal;
+@property (nonatomic, retain) NSString *businessnameGlobal;
+@property (nonatomic, retain) NSString *lowestPriceGlobal;
+@property (nonatomic, retain) NSString *descriptionGlobal;
+@property (nonatomic, retain) NSString *itemnameGlobal;
+@property (nonatomic, retain) NSString *bid_price;
+
 @end
 
