@@ -114,7 +114,7 @@
         appDelegate6.bid_price = self.expectingPrice.text;
         
         // 记录下bid的详细信息: username, barcode, businessname, bid_price. 以后user不得再bid.
-        NSString *urlStr = [NSString stringWithFormat:@"http://160.39.138.243:8081/transaction?username=%@&barcode=%@&businessname=%@&bid_price=%@", appDelegate5.usernameGlobal, appDelegate5.barcodeGlobal, appDelegate5.businessnameGlobal, [expectPrice stringValue]];
+        NSString *urlStr = [NSString stringWithFormat:@"http://dynamicpricing-env.us-east-1.elasticbeanstalk.com/transaction?username=%@&barcode=%@&businessname=%@&bid_price=%@", appDelegate5.usernameGlobal, appDelegate5.barcodeGlobal, appDelegate5.businessnameGlobal, [expectPrice stringValue]];
         NSURL *url = [NSURL URLWithString:urlStr];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSURLResponse *response;

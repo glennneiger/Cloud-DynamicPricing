@@ -84,7 +84,7 @@
     schoolInformation = [NSMutableArray new];
     
     
-    [schoolInformation addObject:@{@"name":@"Latest Products", @"picture":@"latest.jpg", @"url":@"http://cn.dealmoon.com/?sort=time&v=list"}];
+    [schoolInformation addObject:@{@"name":@"Latest Products", @"picture":@"latest.jpg", @"url":@"http://www.dealmoon.com/"}];
     [schoolInformation addObject:@{@"name":@"Clothing Jewelry Bags", @"picture":@"bags.jpg", @"url":@"http://www.dealmoon.com/Clothing-Jewelry-Bags"}];
     [schoolInformation addObject:@{@"name":@"Beauty", @"picture":@"beauty.jpg", @"url":@"http://www.dealmoon.com/Beauty"}];
     [schoolInformation addObject:@{@"name":@"Personal Care", @"picture":@"personal_care.jpg", @"url":@"http://www.dealmoon.com/Health-Personal-Care"}];

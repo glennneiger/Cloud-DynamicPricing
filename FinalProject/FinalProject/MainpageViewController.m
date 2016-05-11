@@ -26,6 +26,9 @@
 - (IBAction)logout6:(id)sender {
     [self performSegueWithIdentifier:@"mainpageToLogin" sender:self];
 }
+- (IBAction)checkMyAcount:(id)sender {
+    [self performSegueWithIdentifier:@"myAccountInfo" sender:self];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
