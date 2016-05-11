@@ -73,7 +73,7 @@
             NSLog(@"Say good bye to this product!");
             
             // 如果bid失败大于三次，则将username, barcode, businessname, bid_price=0同步到database，记录下这个username,禁止他再对同样的商品做bid.
-            NSString *urlStr = [NSString stringWithFormat:@"http://209.2.222.143:8081/transaction?username=%@&barcode=%@&businessname=%@&bid_price=0", appDelegate5.usernameGlobal, appDelegate5.barcodeGlobal, appDelegate5.businessnameGlobal];
+            NSString *urlStr = [NSString stringWithFormat:@"http://dynamicpricing-env.us-east-1.elasticbeanstalk.com/transaction?username=%@&barcode=%@&businessname=%@&bid_price=0", appDelegate5.usernameGlobal, appDelegate5.barcodeGlobal, appDelegate5.businessnameGlobal];
             NSURL *url = [NSURL URLWithString:urlStr];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             NSURLResponse *response;

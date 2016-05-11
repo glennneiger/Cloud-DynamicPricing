@@ -25,7 +25,7 @@
     AppDelegate *appDelegate2 = [[UIApplication sharedApplication] delegate];
     
     // 判断该该用户是否有资格进行bid。（通过匹配barcode, businessname, username来确定）
-    NSString *urlStr = [NSString stringWithFormat:@"http://209.2.222.143:8081/bid?barcode=%@&businessname=%@&username=%@", appDelegate2.barcodeGlobal, appDelegate2.businessnameGlobal, appDelegate2.usernameGlobal];
+    NSString *urlStr = [NSString stringWithFormat:@"http://dynamicpricing-env.us-east-1.elasticbeanstalk.com/bid?barcode=%@&businessname=%@&username=%@", appDelegate2.barcodeGlobal, appDelegate2.businessnameGlobal, appDelegate2.usernameGlobal];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLResponse *response;

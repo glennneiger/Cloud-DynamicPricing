@@ -20,7 +20,7 @@
 }
 - (IBAction)macy:(id)sender {
     AppDelegate *appDelegate11 = [[UIApplication sharedApplication] delegate];    // Set global value
-    appDelegate11.businessnameGlobal = @"macy";
+    appDelegate11.businessnameGlobal = @"macys";
     [self performSegueWithIdentifier:@"WhichBusinessToScan" sender:self];
 }
 - (IBAction)walmart:(id)sender {

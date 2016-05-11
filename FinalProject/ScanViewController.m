@@ -107,7 +107,7 @@
     
     AppDelegate *appDelegate12 = [[UIApplication sharedApplication] delegate];
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://209.2.222.143:8081/scan?barcode=%@&businessname=%@", detectionString, appDelegate12.businessnameGlobal]; // 查看商品是否有活动
+    NSString *urlStr = [NSString stringWithFormat:@"http://dynamicpricing-env.us-east-1.elasticbeanstalk.com/scan?barcode=%@&businessname=%@", detectionString, appDelegate12.businessnameGlobal]; // 查看商品是否有活动
     // 通过匹配：barcode, businessname来决定物品是否正在进行活动。
     
     NSURL *url = [NSURL URLWithString:urlStr];

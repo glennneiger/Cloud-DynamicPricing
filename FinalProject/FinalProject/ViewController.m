@@ -50,7 +50,7 @@
     }
     else{
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://209.2.222.143:8081/login?username=%@&password=%@", self.usernameTextField.text, self.passwordTextField.text];
+    NSString *urlStr = [NSString stringWithFormat:@"http://dynamicpricing-env.us-east-1.elasticbeanstalk.com/login?username=%@&password=%@", self.usernameTextField.text, self.passwordTextField.text];
     NSLog(@"0");
     NSURL *url = [NSURL URLWithString:urlStr];
     NSLog(@"1");

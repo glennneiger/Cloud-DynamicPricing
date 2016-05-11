@@ -44,7 +44,7 @@
     else{
     if(isPasswordFormatIsRight){
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://209.2.222.143:8081/forgetPassword?username=%@&email=%@", self.forgetPasswordUsername.text, self.forgetPasswordEmail.text];
+    NSString *urlStr = [NSString stringWithFormat:@"http://dynamicpricing-env.us-east-1.elasticbeanstalk.com/forgetPassword?username=%@&email=%@", self.forgetPasswordUsername.text, self.forgetPasswordEmail.text];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLResponse *response;

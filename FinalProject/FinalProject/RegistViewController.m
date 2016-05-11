@@ -71,7 +71,7 @@
         
         NSLog(@"Equal");
 
-        NSString *urlStr2 = [NSString stringWithFormat:@"http://209.2.222.143:8081/signup?username=%@&password=%@&email=%@", self.registUsernameTextField.text, self.registPasswordTextField.text, self.registEmail.text];
+        NSString *urlStr2 = [NSString stringWithFormat:@"http://dynamicpricing-env.us-east-1.elasticbeanstalk.com/signup?username=%@&password=%@&email=%@", self.registUsernameTextField.text, self.registPasswordTextField.text, self.registEmail.text];
         NSURL *url2 = [NSURL URLWithString:urlStr2];
         NSURLRequest *request2 = [NSURLRequest requestWithURL:url2];
         NSURLResponse *response2;
