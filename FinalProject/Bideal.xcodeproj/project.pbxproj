@@ -21,10 +21,6 @@
 		183F33AC1CE175EA00C210F2 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F33AB1CE175EA00C210F2 /* SuccessViewController.m */; };
 		183F33AF1CE1781100C210F2 /* GenerateQRcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F33AE1CE1781100C210F2 /* GenerateQRcodeViewController.m */; };
 		183F33B21CE1792400C210F2 /* UIImage+QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F33B11CE1792400C210F2 /* UIImage+QRCodeGenerator.m */; };
-		183F33B81CE17C3000C210F2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183F33B31CE17C3000C210F2 /* Default-568h@2x.png */; };
-		183F33B91CE17C3000C210F2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 183F33B41CE17C3000C210F2 /* Default.png */; };
-		183F33BA1CE17C3000C210F2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183F33B51CE17C3000C210F2 /* Default@2x.png */; };
-		183F33BB1CE17C3000C210F2 /* QRCodeGen-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 183F33B61CE17C3000C210F2 /* QRCodeGen-Info.plist */; };
 		183F33D31CE17D0600C210F2 /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 183F33BF1CE17D0600C210F2 /* bitstream.c */; };
 		183F33D41CE17D0600C210F2 /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 183F33C21CE17D0600C210F2 /* mask.c */; };
 		183F33D51CE17D0600C210F2 /* mmask.c in Sources */ = {isa = PBXBuildFile; fileRef = 183F33C41CE17D0600C210F2 /* mmask.c */; };
@@ -40,6 +36,10 @@
 		185D7FDA1CDFD00000593CDB /* apriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7FD91CDFD00000593CDB /* apriceViewController.m */; };
 		185D7FDD1CDFD08500593CDB /* epriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7FDC1CDFD08500593CDB /* epriceViewController.m */; };
 		186483541CE3A28600C132DA /* MyAccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186483531CE3A28600C132DA /* MyAccountInfoViewController.m */; };
+		187401221CE3B576001ED6C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1874011D1CE3B576001ED6C9 /* Default-568h@2x.png */; };
+		187401231CE3B576001ED6C9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1874011E1CE3B576001ED6C9 /* Default.png */; };
+		187401241CE3B576001ED6C9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1874011F1CE3B576001ED6C9 /* Default@2x.png */; };
+		187401251CE3B576001ED6C9 /* QRCodeGen-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187401201CE3B576001ED6C9 /* QRCodeGen-Info.plist */; };
 		18E0C57F1CE2AFC6005BBF1F /* MainpageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0C57E1CE2AFC6005BBF1F /* MainpageViewController.m */; };
 		18E0C5821CE2B567005BBF1F /* FailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0C5811CE2B567005BBF1F /* FailViewController.m */; };
 		18E0C5851CE2CD1C005BBF1F /* WhichBusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0C5841CE2CD1C005BBF1F /* WhichBusinessViewController.m */; };
@@ -83,11 +83,6 @@
 		183F33AE1CE1781100C210F2 /* GenerateQRcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRcodeViewController.m; sourceTree = "<group>"; };
 		183F33B01CE1792400C210F2 /* UIImage+QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+QRCodeGenerator.h"; sourceTree = "<group>"; };
 		183F33B11CE1792400C210F2 /* UIImage+QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+QRCodeGenerator.m"; sourceTree = "<group>"; };
-		183F33B31CE17C3000C210F2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../../../../Downloads/QRCodeGen/QRCodeGen/Default-568h@2x.png"; sourceTree = "<group>"; };
-		183F33B41CE17C3000C210F2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../../../../Downloads/QRCodeGen/QRCodeGen/Default.png; sourceTree = "<group>"; };
-		183F33B51CE17C3000C210F2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../../../../../Downloads/QRCodeGen/QRCodeGen/Default@2x.png"; sourceTree = "<group>"; };
-		183F33B61CE17C3000C210F2 /* QRCodeGen-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "QRCodeGen-Info.plist"; path = "../../../../../../Downloads/QRCodeGen/QRCodeGen/QRCodeGen-Info.plist"; sourceTree = "<group>"; };
-		183F33B71CE17C3000C210F2 /* QRCodeGen-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "QRCodeGen-Prefix.pch"; path = "../../../../../../Downloads/QRCodeGen/QRCodeGen/QRCodeGen-Prefix.pch"; sourceTree = "<group>"; };
 		183F33BF1CE17D0600C210F2 /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitstream.c; path = qrencode/bitstream.c; sourceTree = "<group>"; };
 		183F33C01CE17D0600C210F2 /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bitstream.h; path = qrencode/bitstream.h; sourceTree = "<group>"; };
 		183F33C11CE17D0600C210F2 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = qrencode/config.h; sourceTree = "<group>"; };
@@ -120,6 +115,11 @@
 		185D7FDC1CDFD08500593CDB /* epriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = epriceViewController.m; sourceTree = "<group>"; };
 		186483521CE3A28600C132DA /* MyAccountInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountInfoViewController.h; sourceTree = "<group>"; };
 		186483531CE3A28600C132DA /* MyAccountInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountInfoViewController.m; sourceTree = "<group>"; };
+		1874011D1CE3B576001ED6C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "QRCodeGen/QRCodeGen/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		1874011E1CE3B576001ED6C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = QRCodeGen/QRCodeGen/Default.png; sourceTree = SOURCE_ROOT; };
+		1874011F1CE3B576001ED6C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "QRCodeGen/QRCodeGen/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		187401201CE3B576001ED6C9 /* QRCodeGen-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "QRCodeGen-Info.plist"; path = "QRCodeGen/QRCodeGen/QRCodeGen-Info.plist"; sourceTree = SOURCE_ROOT; };
+		187401211CE3B576001ED6C9 /* QRCodeGen-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "QRCodeGen-Prefix.pch"; path = "QRCodeGen/QRCodeGen/QRCodeGen-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		18E0C57D1CE2AFC6005BBF1F /* MainpageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainpageViewController.h; sourceTree = "<group>"; };
 		18E0C57E1CE2AFC6005BBF1F /* MainpageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainpageViewController.m; sourceTree = "<group>"; };
 		18E0C5801CE2B567005BBF1F /* FailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailViewController.h; sourceTree = "<group>"; };
@@ -216,11 +216,11 @@
 		182813481CB9828C00EA63C3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				183F33B31CE17C3000C210F2 /* Default-568h@2x.png */,
-				183F33B41CE17C3000C210F2 /* Default.png */,
-				183F33B51CE17C3000C210F2 /* Default@2x.png */,
-				183F33B61CE17C3000C210F2 /* QRCodeGen-Info.plist */,
-				183F33B71CE17C3000C210F2 /* QRCodeGen-Prefix.pch */,
+				1874011D1CE3B576001ED6C9 /* Default-568h@2x.png */,
+				1874011E1CE3B576001ED6C9 /* Default.png */,
+				1874011F1CE3B576001ED6C9 /* Default@2x.png */,
+				187401201CE3B576001ED6C9 /* QRCodeGen-Info.plist */,
+				187401211CE3B576001ED6C9 /* QRCodeGen-Prefix.pch */,
 				182813491CB9828C00EA63C3 /* Info.plist */,
 				1828134A1CB9828C00EA63C3 /* main.m */,
 			);
@@ -353,13 +353,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				183F33BB1CE17C3000C210F2 /* QRCodeGen-Info.plist in Resources */,
-				183F33BA1CE17C3000C210F2 /* Default@2x.png in Resources */,
+				187401251CE3B576001ED6C9 /* QRCodeGen-Info.plist in Resources */,
+				187401241CE3B576001ED6C9 /* Default@2x.png in Resources */,
 				183F33A91CE1330100C210F2 /* Main.storyboard in Resources */,
-				183F33B81CE17C3000C210F2 /* Default-568h@2x.png in Resources */,
+				187401221CE3B576001ED6C9 /* Default-568h@2x.png in Resources */,
 				182813591CB9828C00EA63C3 /* LaunchScreen.xib in Resources */,
 				182813561CB9828C00EA63C3 /* Images.xcassets in Resources */,
-				183F33B91CE17C3000C210F2 /* Default.png in Resources */,
+				187401231CE3B576001ED6C9 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

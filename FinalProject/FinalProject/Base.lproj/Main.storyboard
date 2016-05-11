@@ -291,7 +291,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="myAccountInfoShow" destination="LfA-0g-nhj" id="aCc-go-2DO"/>
+                        <outlet property="myAccountInfoShow" destination="LfA-0g-nhj" id="Scj-8i-SPB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcj-QZ-Ynb" userLabel="First Responder" sceneMemberID="firstResponder"/>

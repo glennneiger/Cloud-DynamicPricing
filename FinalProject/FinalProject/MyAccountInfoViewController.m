@@ -11,6 +11,7 @@
 @interface MyAccountInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *myAccountInfoShow;
 
+
 @end
 
 @implementation MyAccountInfoViewController
@@ -36,7 +37,11 @@
     responseStr = [responseStr stringByReplacingOccurrencesOfString:@"{" withString:@""];
     responseStr = [responseStr stringByReplacingOccurrencesOfString:@"[" withString:@""];
     responseStr = [responseStr stringByReplacingOccurrencesOfString:@"]" withString:@""];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",username" withString:@"\rusername"];
+    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",bid" withString:@"\rbid"];
+    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",iid" withString:@"\riid"];
+    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",bid_price" withString:@"\rbid_price"];
+    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",time" withString:@"\rtime"];
+    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",username" withString:@"\r\rusername"];
 
 
     
