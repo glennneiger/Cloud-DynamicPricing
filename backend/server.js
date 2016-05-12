@@ -61,17 +61,23 @@ connection.connect(function(err){
 
 
 // test_CDNN
-// a =connection.query({
-//     sql: 'SELECT time FROM history  WHERE DATE_SUB(NOW(),INTERVAL ? HOUR) > time',
-//     values:[TIME_PENALTY],
-// },function(err,res,fields){
-//     if (res.length==0){
-//         console.log("No result match!");
-//     }
-//     else console.log( res[0]["time"]);
+// connection.query({
+//         sql: 'SELECT b_name ,itemname , bid_price, time FROM history, business,item WHERE username= ? AND history.bid=business.b_id AND history.iid= item.itemid AND bid_price > 0.01',
+//         values:['tom'],
+//     }, function(err, res,fields){
+//      if (err) console.log(err);
 //
-// });
-// console.log(typeof(a));
+//      else if (res.length==0){
+//          console.log("No result match!");
+//      }
+//
+//      else{
+//          date = res[0]["time"];
+//          console.log( date.getMonth()+"-"+date.getDate()+"-"+date.getFullYear() );
+//      }
+//
+//  });
+// // console.log(typeof(a));
 
 
 // connection.query({
@@ -174,7 +180,7 @@ app.get('/profile', function(req,response){
     console.log(req.query);
     var username = req.query.username;
     connection.query({
-        sql: 'SELECT b_name ,itemname , bid_price,time FROM history, business,item WHERE username= ? AND history.bid=business.b_id AND history.iid= item.itemid AND bid_price > 0.01',
+        sql: 'SELECT b_name ,itemname , bid_price, time FROM history, business,item WHERE username= ? AND history.bid=business.b_id AND history.iid= item.itemid AND bid_price > 0.01',
         values:[username],
     }, function(err, res,fields){
             if(err){
@@ -186,7 +192,8 @@ app.get('/profile', function(req,response){
             }else {
 		record = "";
 		for (var i = 0 ; i <res.length; i++){
-			record= record + res[i]['b_name'] + " "+res[i]['itemname'] +" "+res[i]['bid_price']+"$"+" " +res[i]['time']+"\n";
+            date = res[i]['time'];
+			record= record + res[i]['b_name'] + " "+res[i]['itemname'] +" "+res[i]['bid_price']+"$"+" " +date.getMonth()+"-"+date.getDate()+"-"+date.getFullYear() +"\n";
 		}
                 response.send(record);
             }
