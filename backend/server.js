@@ -174,7 +174,7 @@ app.get('/profile', function(req,response){
     console.log(req.query);
     var username = req.query.username;
     connection.query({
-        sql: 'SELECT b_name ,itemname , bid_price,time FROM history, business,item WHERE username= ? AND history.bid=business.b_id AND history.iid= item.itemid',
+        sql: 'SELECT b_name ,itemname , bid_price,time FROM history, business,item WHERE username= ? AND history.bid=business.b_id AND history.iid= item.itemid AND bid_price > 0.01',
         values:[username],
     }, function(err, res,fields){
             if(err){
