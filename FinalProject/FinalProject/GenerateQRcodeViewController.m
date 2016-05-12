@@ -48,7 +48,7 @@
     //    ViewController *myViewController = [[ViewController alloc] initWithNibName:@"MyView" bundle:nil];
     //    myViewController.view.frame = CGRectMake(0, 100, myViewController.view.frame.size.width, myViewController.view.frame.size.height);
     
-    imgView.frame = CGRectMake(75, 150, imgView.frame.size.width, imgView.frame.size.height);
+    imgView.frame = CGRectMake(85, 150, imgView.frame.size.width, imgView.frame.size.height);
     
     
     [self.view addSubview:imgView];

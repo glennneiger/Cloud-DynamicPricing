@@ -9,7 +9,8 @@
 #import "MyAccountInfoViewController.h"
 
 @interface MyAccountInfoViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *myAccountInfoShow;
+@property (weak, nonatomic) IBOutlet UITextView *myAccountHistory;
+@property (weak, nonatomic) IBOutlet UILabel *Directory;
 
 
 @end
@@ -32,22 +33,36 @@
     NSString *responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSLog(@"%@", responseStr);
     
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"}" withString:@""];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"{" withString:@""];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"[" withString:@""];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"]" withString:@""];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",bid" withString:@"\rbid"];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",iid" withString:@"\riid"];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",bid_price" withString:@"\rbid_price"];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",time" withString:@"\rtime"];
-    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",username" withString:@"\r\rusername"];
-
-
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"}" withString:@""];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"{" withString:@""];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"[" withString:@""];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@"]" withString:@""];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",bid" withString:@"\rbid"];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",iid" withString:@"\riid"];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",bid_price" withString:@"\rbid_price"];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",time" withString:@"\rtime"];
+//    responseStr = [responseStr stringByReplacingOccurrencesOfString:@",username" withString:@"\r\rusername"];
     
-        [self.myAccountInfoShow setText: responseStr];
-        self.myAccountInfoShow.lineBreakMode = NSLineBreakByWordWrapping;
-        self.myAccountInfoShow.numberOfLines = 0;
+//    NSArray *subStrings = [responseStr componentsSeparatedByString:@"\n"];
+//    
+//    unsigned long a = [subStrings count];
+//    
+//    NSLog(@"%lu", a);
+    
+    
+    
+//    NSString *itemname = [itemnameOrg substringFromIndex:9];
+//    NSString *description = [descriptionOrg substringFromIndex:12];
+//    NSString *price = [priceOrg substringFromIndex:6];
+    
+    
+    
+    [self.myAccountHistory setText: responseStr];
+    [self.Directory setText: @" Business         Item           Price              Date"];
+//    self.myAccountHistory.lineBreakMode = NSLineBreakByWordWrapping;
+//    self.myAccountHistory.numberOfLines = 0;
+    
     
 
     
