@@ -193,7 +193,7 @@ app.get('/profile', function(req,response){
 		record = "";
 		for (var i = 0 ; i <res.length; i++){
             date = res[i]['time'];
-			record= record + res[i]['b_name'] + "     "+res[i]['itemname'] +"     "+res[i]['bid_price']+"$"+"     " +date.getMonth()+"-"+date.getDate()+"-"+date.getFullYear() +"\n";
+			record= record + res[i]['b_name'] + "          "+res[i]['itemname'] +"          "+res[i]['bid_price']+"$"+"          " +date.getMonth()+"-"+date.getDate()+"-"+date.getFullYear() +"\n";
 		}
                 response.send(record);
             }
